@@ -1,0 +1,50 @@
+[project]
+name = "tsa_checkpoint"
+version = "1.0.0"
+description = "ETL pipeline to scrape passenger travel numbers from the TSA website."
+keywords = ["Python", "ETL", "Snowflake", "Streamlit", "Prophet", "tsa"]
+requires-python = ">=3.12"
+dependencies = [
+    "beautifulsoup4",
+    "doppler-sdk",
+    "lxml",
+    "pandas",
+    "plotly",
+    "prophet",
+    "requests",
+    "snowflake-connector-python[pandas]",
+    "streamlit",
+    "types-requests"
+]
+
+[[project.authors]]
+name = "Aritra Ganguly"
+email = "ganguly.aritra@outlook.com"
+
+[project.readme]
+file = "README.md"
+content-type = "text/markdown"
+
+[project.scripts]
+run_travel_numbers = "tsa_checkpoint.main:main"
+
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.mypy]
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+filterwarnings = ["ignore::FutureWarning"]
+
+[dependency-groups]
+dev = [
+  "mypy>=1.11.2",
+  "python-dotenv",
+  "pytest",
+  "ruff"
+]
+lint = [
+  "ruff"
+]
